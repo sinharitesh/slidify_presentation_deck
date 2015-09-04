@@ -1,0 +1,90 @@
+---
+title       : Slidify Example
+subtitle    : ERS - (Technology Focus Group)
+author      : Ritesh Sinha
+logo        : img-dir-hcl-logo.png
+job         : Big Data Analytics
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : default      #
+widgets     : [quiz, bootsrap]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft, selfcontained}
+knit        : slidify::knit2slides
+ext_widgets : {rCharts: libraries/nvd3}
+---
+
+## Slidify Introduction
+
+1. Good for interactive presentation.
+2. Uses YAML - yet another Markdown language
+3. Write using R Markdown
+4. Use an empty line followed by three dashes to separate slides!
+5. Steep learning curve.
+
+--- .class #id 
+
+## Slide 2
+
+* How to render image
+
+![hcllogo](hcllogo.png)
+
+
+--- .class #id 
+
+## RChart - Bar Charts
+
+Interactive chart using rCharts.
+
+```{r nvd3plot2, results = 'asis', comment = NA, message = F, echo = F}
+library(rCharts)
+hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
+n1 <- nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male, type = "multiBarChart")
+n1$chart(color = c('maroon', 'blue', '#594c26', 'green'))
+n1$print("chart3")
+```
+
+---
+
+## Code example for Scatterplot
+
+```{r nvd3plot, comment = NA, message = F, echo = T}
+require(rCharts)
+n1 <- nPlot(mpg ~ wt, data = mtcars, type = 'scatterChart')
+n1$show('inline')
+```
+
+---
+
+## Motion chart example
+
+Following URL is a good resource of googleVis examples.
+
+http://mages.github.io/Introduction_to_googleVis/
+```{r motionchartcode, results='asis', comment = NA, message = F, echo = F}
+library(googleVis)
+N <- gvisMotionChart(Fruits, "Fruit", "Year",
+                     options=list(width=600, height=400))
+print(N, 'jsChart')
+```
+
+--- &radio
+
+## Question 1
+
+What is 1 + 1?
+
+1. 1
+2. _2_
+3. 3
+4. 4
+
+*** .hint
+This is a hint
+
+
+*** .explanation
+This is an explanation
+
+
+

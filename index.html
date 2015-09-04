@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slidify Example</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Slidify Example">
+  <meta name="author" content="Ritesh Sinha">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/default.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/nv.d3.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/rNVD3.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  <script src="libraries/widgets/nvd3/js/jquery-1.8.2.min.js"></script>
+<script src="libraries/widgets/nvd3/js/d3.v3.min.js"></script>
+<script src="libraries/widgets/nvd3/js/nv.d3.min-new.js"></script>
+<script src="libraries/widgets/nvd3/js/fisheye.js"></script>
+
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/img-dir-hcl-logo.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Slidify Example</h1>
+    <h2>ERS - (Technology Focus Group)</h2>
+    <p>Ritesh Sinha<br/>Big Data Analytics</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Slidify Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Good for interactive presentation.</li>
+<li>Uses YAML - yet another Markdown language</li>
+<li>Write using R Markdown</li>
+<li>Use an empty line followed by three dashes to separate slides!</li>
+<li>Steep learning curve.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Slide 2</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>How to render image</li>
+</ul>
+
+<p><img src="hcllogo.png" alt="hcllogo"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>RChart - Bar Charts</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Interactive chart using rCharts.</p>
+
+<div id = 'chart3' class = 'rChart nvd3'></div>
+
+<script type='text/javascript'>
+ $(document).ready(function(){
+      drawchart3()
+    });
+    function drawchart3(){  
+      var opts = {
+ "dom": "chart3",
+"width":    800,
+"height":    400,
+"x": "Hair",
+"y": "Freq",
+"group": "Eye",
+"type": "multiBarChart",
+"id": "chart3" 
+},
+        data = [
+ {
+ "Hair": "Black",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             32 
+},
+{
+ "Hair": "Brown",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             53 
+},
+{
+ "Hair": "Red",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Blond",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":              3 
+},
+{
+ "Hair": "Black",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             11 
+},
+{
+ "Hair": "Brown",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             50 
+},
+{
+ "Hair": "Red",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Blond",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             30 
+},
+{
+ "Hair": "Black",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Brown",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":             25 
+},
+{
+ "Hair": "Red",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":              7 
+},
+{
+ "Hair": "Blond",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":              5 
+},
+{
+ "Hair": "Black",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              3 
+},
+{
+ "Hair": "Brown",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":             15 
+},
+{
+ "Hair": "Red",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              7 
+},
+{
+ "Hair": "Blond",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              8 
+} 
+]
+  
+      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus" || opts.type==="bulletChart")) {
+        var data = d3.nest()
+          .key(function(d){
+            //return opts.group === undefined ? 'main' : d[opts.group]
+            //instead of main would think a better default is opts.x
+            return opts.group === undefined ? opts.y : d[opts.group];
+          })
+          .entries(data);
+      }
+      
+      if (opts.disabled != undefined){
+        data.map(function(d, i){
+          d.disabled = opts.disabled[i]
+        })
+      }
+      
+      nv.addGraph(function() {
+        var chart = nv.models[opts.type]()
+          .width(opts.width)
+          .height(opts.height)
+          
+        if (opts.type != "bulletChart"){
+          chart
+            .x(function(d) { return d[opts.x] })
+            .y(function(d) { return d[opts.y] })
+        }
+          
+         
+        chart
+  .color([ "maroon", "blue", "#594c26", "green" ])
+          
+        
+
+        
+        
+        
+      
+       d3.select("#" + opts.id)
+        .append('svg')
+        .datum(data)
+        .transition().duration(500)
+        .call(chart);
+
+       nv.utils.windowResize(chart.update);
+       return chart;
+      });
+    };
+</script>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Code example for Scatterplot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">require(rCharts)
+n1 &lt;- nPlot(mpg ~ wt, data = mtcars, type = &#39;scatterChart&#39;)
+n1$show(&#39;inline&#39;)
+</code></pre>
+
+<pre><code>
+&lt;div id = &#39;chart241858b12516&#39; class = &#39;rChart nvd3&#39;&gt;&lt;/div&gt;
+&lt;script type=&#39;text/javascript&#39;&gt;
+ $(document).ready(function(){
+      drawchart241858b12516()
+    });
+    function drawchart241858b12516(){  
+      var opts = {
+ &quot;dom&quot;: &quot;chart241858b12516&quot;,
+&quot;width&quot;:    800,
+&quot;height&quot;:    400,
+&quot;x&quot;: &quot;wt&quot;,
+&quot;y&quot;: &quot;mpg&quot;,
+&quot;type&quot;: &quot;scatterChart&quot;,
+&quot;id&quot;: &quot;chart241858b12516&quot; 
+},
+        data = [
+ {
+ &quot;mpg&quot;:             21,
+&quot;cyl&quot;:              6,
+&quot;disp&quot;:            160,
+&quot;hp&quot;:            110,
+&quot;drat&quot;:            3.9,
+&quot;wt&quot;:           2.62,
+&quot;qsec&quot;:          16.46,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              4 
+},
+{
+ &quot;mpg&quot;:             21,
+&quot;cyl&quot;:              6,
+&quot;disp&quot;:            160,
+&quot;hp&quot;:            110,
+&quot;drat&quot;:            3.9,
+&quot;wt&quot;:          2.875,
+&quot;qsec&quot;:          17.02,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              4 
+},
+{
+ &quot;mpg&quot;:           22.8,
+&quot;cyl&quot;:              4,
+&quot;disp&quot;:            108,
+&quot;hp&quot;:             93,
+&quot;drat&quot;:           3.85,
+&quot;wt&quot;:           2.32,
+&quot;qsec&quot;:          18.61,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              1 
+},
+{
+ &quot;mpg&quot;:           21.4,
+&quot;cyl&quot;:              6,
+&quot;disp&quot;:            258,
+&quot;hp&quot;:            110,
+&quot;drat&quot;:           3.08,
+&quot;wt&quot;:          3.215,
+&quot;qsec&quot;:          19.44,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              1 
+},
+{
+ &quot;mpg&quot;:           18.7,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:            360,
+&quot;hp&quot;:            175,
+&quot;drat&quot;:           3.15,
+&quot;wt&quot;:           3.44,
+&quot;qsec&quot;:          17.02,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              2 
+},
+{
+ &quot;mpg&quot;:           18.1,
+&quot;cyl&quot;:              6,
+&quot;disp&quot;:            225,
+&quot;hp&quot;:            105,
+&quot;drat&quot;:           2.76,
+&quot;wt&quot;:           3.46,
+&quot;qsec&quot;:          20.22,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              1 
+},
+{
+ &quot;mpg&quot;:           14.3,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:            360,
+&quot;hp&quot;:            245,
+&quot;drat&quot;:           3.21,
+&quot;wt&quot;:           3.57,
+&quot;qsec&quot;:          15.84,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              4 
+},
+{
+ &quot;mpg&quot;:           24.4,
+&quot;cyl&quot;:              4,
+&quot;disp&quot;:          146.7,
+&quot;hp&quot;:             62,
+&quot;drat&quot;:           3.69,
+&quot;wt&quot;:           3.19,
+&quot;qsec&quot;:             20,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              2 
+},
+{
+ &quot;mpg&quot;:           22.8,
+&quot;cyl&quot;:              4,
+&quot;disp&quot;:          140.8,
+&quot;hp&quot;:             95,
+&quot;drat&quot;:           3.92,
+&quot;wt&quot;:           3.15,
+&quot;qsec&quot;:           22.9,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              2 
+},
+{
+ &quot;mpg&quot;:           19.2,
+&quot;cyl&quot;:              6,
+&quot;disp&quot;:          167.6,
+&quot;hp&quot;:            123,
+&quot;drat&quot;:           3.92,
+&quot;wt&quot;:           3.44,
+&quot;qsec&quot;:           18.3,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              4 
+},
+{
+ &quot;mpg&quot;:           17.8,
+&quot;cyl&quot;:              6,
+&quot;disp&quot;:          167.6,
+&quot;hp&quot;:            123,
+&quot;drat&quot;:           3.92,
+&quot;wt&quot;:           3.44,
+&quot;qsec&quot;:           18.9,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              4 
+},
+{
+ &quot;mpg&quot;:           16.4,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:          275.8,
+&quot;hp&quot;:            180,
+&quot;drat&quot;:           3.07,
+&quot;wt&quot;:           4.07,
+&quot;qsec&quot;:           17.4,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              3 
+},
+{
+ &quot;mpg&quot;:           17.3,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:          275.8,
+&quot;hp&quot;:            180,
+&quot;drat&quot;:           3.07,
+&quot;wt&quot;:           3.73,
+&quot;qsec&quot;:           17.6,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              3 
+},
+{
+ &quot;mpg&quot;:           15.2,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:          275.8,
+&quot;hp&quot;:            180,
+&quot;drat&quot;:           3.07,
+&quot;wt&quot;:           3.78,
+&quot;qsec&quot;:             18,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              3 
+},
+{
+ &quot;mpg&quot;:           10.4,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:            472,
+&quot;hp&quot;:            205,
+&quot;drat&quot;:           2.93,
+&quot;wt&quot;:           5.25,
+&quot;qsec&quot;:          17.98,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              4 
+},
+{
+ &quot;mpg&quot;:           10.4,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:            460,
+&quot;hp&quot;:            215,
+&quot;drat&quot;:              3,
+&quot;wt&quot;:          5.424,
+&quot;qsec&quot;:          17.82,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              4 
+},
+{
+ &quot;mpg&quot;:           14.7,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:            440,
+&quot;hp&quot;:            230,
+&quot;drat&quot;:           3.23,
+&quot;wt&quot;:          5.345,
+&quot;qsec&quot;:          17.42,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              4 
+},
+{
+ &quot;mpg&quot;:           32.4,
+&quot;cyl&quot;:              4,
+&quot;disp&quot;:           78.7,
+&quot;hp&quot;:             66,
+&quot;drat&quot;:           4.08,
+&quot;wt&quot;:            2.2,
+&quot;qsec&quot;:          19.47,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              1 
+},
+{
+ &quot;mpg&quot;:           30.4,
+&quot;cyl&quot;:              4,
+&quot;disp&quot;:           75.7,
+&quot;hp&quot;:             52,
+&quot;drat&quot;:           4.93,
+&quot;wt&quot;:          1.615,
+&quot;qsec&quot;:          18.52,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              2 
+},
+{
+ &quot;mpg&quot;:           33.9,
+&quot;cyl&quot;:              4,
+&quot;disp&quot;:           71.1,
+&quot;hp&quot;:             65,
+&quot;drat&quot;:           4.22,
+&quot;wt&quot;:          1.835,
+&quot;qsec&quot;:           19.9,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              1 
+},
+{
+ &quot;mpg&quot;:           21.5,
+&quot;cyl&quot;:              4,
+&quot;disp&quot;:          120.1,
+&quot;hp&quot;:             97,
+&quot;drat&quot;:            3.7,
+&quot;wt&quot;:          2.465,
+&quot;qsec&quot;:          20.01,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              1 
+},
+{
+ &quot;mpg&quot;:           15.5,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:            318,
+&quot;hp&quot;:            150,
+&quot;drat&quot;:           2.76,
+&quot;wt&quot;:           3.52,
+&quot;qsec&quot;:          16.87,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              2 
+},
+{
+ &quot;mpg&quot;:           15.2,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:            304,
+&quot;hp&quot;:            150,
+&quot;drat&quot;:           3.15,
+&quot;wt&quot;:          3.435,
+&quot;qsec&quot;:           17.3,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              2 
+},
+{
+ &quot;mpg&quot;:           13.3,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:            350,
+&quot;hp&quot;:            245,
+&quot;drat&quot;:           3.73,
+&quot;wt&quot;:           3.84,
+&quot;qsec&quot;:          15.41,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              4 
+},
+{
+ &quot;mpg&quot;:           19.2,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:            400,
+&quot;hp&quot;:            175,
+&quot;drat&quot;:           3.08,
+&quot;wt&quot;:          3.845,
+&quot;qsec&quot;:          17.05,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              0,
+&quot;gear&quot;:              3,
+&quot;carb&quot;:              2 
+},
+{
+ &quot;mpg&quot;:           27.3,
+&quot;cyl&quot;:              4,
+&quot;disp&quot;:             79,
+&quot;hp&quot;:             66,
+&quot;drat&quot;:           4.08,
+&quot;wt&quot;:          1.935,
+&quot;qsec&quot;:           18.9,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              1 
+},
+{
+ &quot;mpg&quot;:             26,
+&quot;cyl&quot;:              4,
+&quot;disp&quot;:          120.3,
+&quot;hp&quot;:             91,
+&quot;drat&quot;:           4.43,
+&quot;wt&quot;:           2.14,
+&quot;qsec&quot;:           16.7,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              5,
+&quot;carb&quot;:              2 
+},
+{
+ &quot;mpg&quot;:           30.4,
+&quot;cyl&quot;:              4,
+&quot;disp&quot;:           95.1,
+&quot;hp&quot;:            113,
+&quot;drat&quot;:           3.77,
+&quot;wt&quot;:          1.513,
+&quot;qsec&quot;:           16.9,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              5,
+&quot;carb&quot;:              2 
+},
+{
+ &quot;mpg&quot;:           15.8,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:            351,
+&quot;hp&quot;:            264,
+&quot;drat&quot;:           4.22,
+&quot;wt&quot;:           3.17,
+&quot;qsec&quot;:           14.5,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              5,
+&quot;carb&quot;:              4 
+},
+{
+ &quot;mpg&quot;:           19.7,
+&quot;cyl&quot;:              6,
+&quot;disp&quot;:            145,
+&quot;hp&quot;:            175,
+&quot;drat&quot;:           3.62,
+&quot;wt&quot;:           2.77,
+&quot;qsec&quot;:           15.5,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              5,
+&quot;carb&quot;:              6 
+},
+{
+ &quot;mpg&quot;:             15,
+&quot;cyl&quot;:              8,
+&quot;disp&quot;:            301,
+&quot;hp&quot;:            335,
+&quot;drat&quot;:           3.54,
+&quot;wt&quot;:           3.57,
+&quot;qsec&quot;:           14.6,
+&quot;vs&quot;:              0,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              5,
+&quot;carb&quot;:              8 
+},
+{
+ &quot;mpg&quot;:           21.4,
+&quot;cyl&quot;:              4,
+&quot;disp&quot;:            121,
+&quot;hp&quot;:            109,
+&quot;drat&quot;:           4.11,
+&quot;wt&quot;:           2.78,
+&quot;qsec&quot;:           18.6,
+&quot;vs&quot;:              1,
+&quot;am&quot;:              1,
+&quot;gear&quot;:              4,
+&quot;carb&quot;:              2 
+} 
+]
+
+      if(!(opts.type===&quot;pieChart&quot; || opts.type===&quot;sparklinePlus&quot; || opts.type===&quot;bulletChart&quot;)) {
+        var data = d3.nest()
+          .key(function(d){
+            //return opts.group === undefined ? &#39;main&#39; : d[opts.group]
+            //instead of main would think a better default is opts.x
+            return opts.group === undefined ? opts.y : d[opts.group];
+          })
+          .entries(data);
+      }
+
+      if (opts.disabled != undefined){
+        data.map(function(d, i){
+          d.disabled = opts.disabled[i]
+        })
+      }
+
+      nv.addGraph(function() {
+        var chart = nv.models[opts.type]()
+          .width(opts.width)
+          .height(opts.height)
+
+        if (opts.type != &quot;bulletChart&quot;){
+          chart
+            .x(function(d) { return d[opts.x] })
+            .y(function(d) { return d[opts.y] })
+        }
+
+
+
+
+
+
+
+
+
+
+       d3.select(&quot;#&quot; + opts.id)
+        .append(&#39;svg&#39;)
+        .datum(data)
+        .transition().duration(500)
+        .call(chart);
+
+       nv.utils.windowResize(chart.update);
+       return chart;
+      });
+    };
+&lt;/script&gt;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Motion chart example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Following URL is a good resource of googleVis examples.</p>
+
+<p><a href="http://mages.github.io/Introduction_to_googleVis/">http://mages.github.io/Introduction_to_googleVis/</a></p>
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID241868147a6c"></script>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Question 1</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div class="quiz quiz-single well ">
+  <p>What is 1 + 1?</p>
+
+<ol>
+<li>1</li>
+<li><em>2</em></li>
+<li>3</li>
+<li>4</li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>This is a hint</p>
+
+</div>
+<div class="quiz-explanation">
+  <p>This is an explanation</p>
+
+</div>
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Slidify Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Slide 2'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='RChart - Bar Charts'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Code example for Scatterplot'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Motion chart example'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Question 1'>
+         6
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
